@@ -37,6 +37,15 @@
 
 <body>
 
+    <!-- Project Overlay Modal -->
+    <div id="projectOverlay" class="overlay">
+    <div class="overlay-content">
+        <button id="closeOverlay" class="close-btn">&times;</button>
+        <iframe id="projectFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+
+
     <!--=================== Header ====================-->
     <header id="header" class="header">
         <div class="container">
@@ -220,20 +229,7 @@
                             </p>
                             <span class="qualification__date">Completed in 2025</span>
                         </div>
-                        <!-- Education 2-->
-                        <div class="qualification__item">
-                            <h3 class="qualification__title"></h3>
-                            <h4 class="qualification__title">Govt. Jinnah Boys College</h4>
-                            <span class="qualification__date">Completed in 2019</span>
-                        </div>
-                        <!-- Education 3-->
-                        <div class="qualification__item">
-                            <h3 class="qualification__title">Matriculation</h3>
-                            <h4 class="qualification__title">Fatimiyah Boys School</h4>
-                            <p class="qualification__description">
-                            </p>
-                            <span class="qualification__date">Completed in 2017</span>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="qualification__footer">
@@ -294,11 +290,7 @@
                     </div>
                     
                 </div>
-                <div style="align-items: center;justify-content: center;display: flex; margin-top:10px;"><a
-                        href="https://github.com/KyleLosariaX?tab=repositories" class="btn--primary"
-                        style="padding:1.5rem 4rem;margin-top:10px;display: inline-block;align-items:center;text-align:center;justify-content:center;">View
-                        More Projects
-                        <i style="text-align:center;" class="fa-solid fa-angle-down fa-bounce"></i></a></div>
+                
             </div>
 
 
@@ -323,6 +315,8 @@
                             Automate data collection locally, Mirroring and provide compute power.
 
                         </p>
+                        <a href="https://github.com/KyleLosariaX/Cryptoverse" class="project__link">Setup, Objectvies and Specifications
+                            <i class="ri-arrow-right-line"></i></a>
                         <a href="https://github.com/KyleLosariaX/Cryptoverse" class="project__link">Building B.A.S.E.C
                             <i class="ri-arrow-right-line"></i></a>
                     </div>
@@ -391,4 +385,36 @@
   }
 
   startTypewriterLoop();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("projectOverlay");
+    const iframe = document.getElementById("projectFrame");
+    const closeBtn = document.getElementById("closeOverlay");
+    const projectLinks = document.querySelectorAll(".project__link");
+
+    projectLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const url = link.getAttribute("href");
+        iframe.src = url;
+        overlay.classList.add("active"); // ✅ Trigger CSS animation
+        document.body.style.overflow = "hidden"; // Lock scroll
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.remove("active"); // ✅ Fade out
+      document.body.style.overflow = "auto"; // Restore scroll
+      setTimeout(() => {
+        iframe.src = ""; // Clear iframe after fade-out
+      }, 400); // Match transition duration
+    });
+
+    // Optional: click outside iframe to close
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) closeBtn.click();
+    });
+  });
 </script>

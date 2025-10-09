@@ -1,0 +1,171 @@
+
+<head>
+<link rel="stylesheet" href="assets/css/homelab.css">
+</head>
+
+
+<head>
+<link rel="stylesheet" href="assets/css/homelab.css">
+</head>
+
+<main class="container forum-layout">
+  <section id="background">
+    <nav class="top-nav">
+      <ul class="top-nav__list">
+        <li><a href="#section1">Equipment</a></li>
+        <li><a href="#section2">Building</a></li>
+        <li><a href="#section3">TConfiguring</a></li>
+        <li><a href="#section4">Skills & Outcomes</a></li>
+      </ul>
+    </nav>
+
+    <section class="content">
+      <div id="section1" class="section">
+        <div class="section__header">
+          <h2 class="section__title">Equipment</h2>
+          <span class="section__subtitle">Building equipment</span>
+        </div>
+        <div class="d-grid">
+          <div class="textParagraph">
+            <h3>Gigabyte Brix</h3>
+            <p>The Gigabyte BRIX serves as the central component of the homelab, functioning as the main Proxmox server that hosts multiple virtual machines and Docker containers. It also operates as the NAS (Network Attached Storage) for file backups, ISO images, and shared resources. Despite its small form factor, the BRIX provides reliable performance for continuous uptime and lightweight virtual workloads.</p>
+          </div>
+
+          <div class="textParagraph">
+            <h3>Tp Link 105SG</h3>
+            <p>The TP-Link 105SG switch connects all homelab devices together, forming the local network backbone. It ensures stable gigabit communication between the Proxmox server, personal PCs, and external management devices. Although simple, this unmanaged switch provides consistent throughput and low latency for small-scale lab networking.</p>
+          </div>
+
+          <div class="textParagraph">
+            <h3>Main PC (RTX 4070 Super, 32GB RAM) — No Cost</h3>
+            <p>
+            The main PC provides high-performance compute power for running resource-intensive virtual machines and AI-related workloads, including large language models (LLMs) and data-heavy containers. It acts as the lab’s powerhouse for testing advanced deployments, GPU acceleration, and demanding simulation environments.
+            </p>
+          </div>
+
+          <div class="textParagraph">
+            <h3>Chromebook with Linux (Nobara) — No Cost</h3>
+            <p>
+            The Chromebook running Linux Nobara acts as the network management and control device for the lab. It handles VLAN configuration, firewall adjustments, and SSH connections to other systems. Its portability allows quick network troubleshooting, monitoring, and configuration from anywhere within the local network.
+            </p>
+          </div>
+
+
+          <div class="textParagraph">
+            <h3>Surface Pro 9 (Personal PC) — No Cost</h3>
+            <p>
+            The Surface Pro 9 is used for running smaller virtualized services that require minimal resources, such as local test environments or lightweight monitoring tools. It also serves as a documentation and administration device, managing dashboards, VPN access, and project notes.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div id="section2" class="section">
+        <div class="section__header">
+          <h2 class="section__title">Objectives</h2>
+          <span class="section__subtitle">Purpose and goals</span>
+        </div>
+        <div class="d-grid">
+          <ul>
+            <li>Gain hands-on experience with server management and network configuration.</li>
+            <li>Create a secure, scalable environment for testing automation and deployment workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="section3" class="section">
+        <div class="section__header">
+          <h2 class="section__title">Technical Setup</h2>
+          <span class="section__subtitle">Hardware, software, and services used</span>
+        </div>
+        <div class="d-grid">
+          <h3>Hardware</h3>
+          <ul>
+            <li>Dell Optiplex 7060</li>
+            <li>Raspberry Pi 4 Cluster</li>
+            <li>Unifi USG Router</li>
+          </ul>
+
+          <!-- ✅ Added hardware table -->
+          <table class="equipment-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gigabyte Brix (1tb HDD)</td>
+                <td>£30</td>
+                <td>Main Proxmox server hosting VMs and containers and the NAS</td>
+              </tr>
+              <tr>
+                <td>TPlink 105SG</td>
+                <td>£7.30 (Ebay)</td>
+                <td>Switch for the homelab</td>
+              </tr>
+              <tr>
+                <td>Chomebook /w Linux Nobara</td>
+                <td>---</td>
+                <td>Network management, VLAN configuration, and firewall control</td>
+              </tr>
+              <tr>
+                <td>SP9 (personal pc)</td>
+                <td>---</td>
+                <td>Running smaller vm Services</td>
+              </tr>
+              <tr>
+                <td>Main Pc (4070 Super, 32Gb Ram)</td>
+                <td>---</td>
+                <td>Running VM services that requires heavy compute power such as LLM's</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Software & Services (To be developed)</h3>
+          <ul>
+            <li><strong>Virtualization:</strong> Proxmox VE, Docker</li>
+            <li><strong>Services:</strong> Pi-hole, Nextcloud, Portainer, Nginx Reverse Proxy</li>
+            <li><strong>Networking:</strong> VLAN setup, static IP management, remote access via WireGuard</li>
+            <li><strong>Monitoring:</strong> Grafana + Prometheus dashboards</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="section4" class="section">
+        <div class="section__header">
+          <h2 class="section__title">Skills & Outcomes to be developed</h2>
+          <span class="section__subtitle">Key skills and project results</span>
+        </div>
+        <div class="d-grid">
+          <h3>Key Skills Developed</h3>
+          <ul>
+            <li>Linux server administration and shell scripting</li>
+            <li>Network configuration and troubleshooting (DHCP, DNS, VLANs)</li>
+            <li>Containerization and virtualization management</li>
+            <li>System monitoring and automation</li>
+            <li>Backup and data redundancy planning</li>
+          </ul>
+
+          <h3>Outcomes</h3>
+          <ul>
+            <li>Successfully hosting multiple self-managed services accessible over VPN.</li>
+            <li>Improved understanding of DevOps workflows and network security fundamentals.</li>
+            <li>Building a local GitLab instance for version control and CI/CD testing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+
+
+
+
+
+
+
