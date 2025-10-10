@@ -104,7 +104,7 @@
   /* Reusable CSS
   --------------------------------------------------------------*/
   .container {
-    width: 90%;
+    width: 60%;
     max-width: var(--width-container);
     margin: auto;
   }
@@ -600,7 +600,7 @@
   /* Footer
   --------------------------------------------------------------*/
   .footer {
-    background-color: var(--color-bg-footer);
+    background-color: var(--color-bg-secondary);
     padding: 5rem 0;
   }
   
@@ -673,7 +673,7 @@
     }
   
     .qualification__content {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
     }
   
     .qualification__footer {
@@ -795,7 +795,7 @@
 /* Overlay content animation */
 .overlay-content {
   position: relative;
-  width: 90%;
+  width: 60%;
   max-width: 1200px;
   height: 80%;
   display: flex;
