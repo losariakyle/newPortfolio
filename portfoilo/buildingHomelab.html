@@ -72,8 +72,37 @@
         <div class="d-grid">
           
           <h3><u>Building</u></h3>
+          <p>Here is are the devcies connected to each other, each device is connected using a cat 6 rj45 ethernet cable</p>
+          <p>Before running and installing the Operating System, its a good idea to run tests on the equipment. Ventoy is an excellent tool, it runs on a USB and allows you to put multiple isos on
+            the USB drive allowing you to reuse multiple iso's.To check the status of the RAM, memtest86+ is a great tool, and runs on both UEFI and Legacy BIOS motherboards. For the HDD, Heron HDPE provides a minamalist
+            Windows 11 installation with the most popular tools such as HDD scan
+          </p>
+          <p>To run the Linux server, Linux Ubuntu server was used. Ubuntu server provides a minamalist and easy set up for new users and also comes with a CLI cheatsheet</p>
+
 
           <h3><u>Configuring</u></h3>
+          <p>Configuring was a new technichal challenge</p>
+          <p>With no router being in the configuration, a newly connected device is not assigned an IP</p>
+          <p>Newly assigned ip addresses are given out by hardware on the router or a server</p>
+          <p>So to address this issue, assigning a STATIC ip address is one way of connecting multiple devices for communication</p>
+          <br>
+          <p>Here typing the linux command <i>ip addr show</i> will show the NICs on the device </p>
+          <p>enp3s0 has no ip Address so we can address this issue</p>
+          <br>
+          <p>First we create a Netplan with <i>sudo nano /etc/netplan/01-netcfg.yaml</i></p>
+          <p>This is what ive used below, the slash indicates that this is a subnet and is done as to not conflict with the exisiting wifi network</p>
+          <p>This ip address /28 is split into 16 addresses, one ip adress is given to address the network</p>
+
+
+          <p>The server is set up with the ip adress ending in the netplan, and applied</p>
+          <p>Insert some image</p>
+          <p>On the chromebook, a .19 ending ip adress is used </p>
+          <p>When you SSH into the server (Image above), running the command ssh -v remoteServerName@ipaddress will show you the steps that it takes to connect to the servers.
+            The username and the server name shows, highlighting the successfull connection to the server, meaning the devices can communicate
+          </p>
+
+
+
           
           <h3><u>Outcomes, Challenges and reflection</u></h3>
           
@@ -98,6 +127,20 @@
       </div>
 
       <div id="section4" class="section">
+        <div class="section__header">
+          <h2 class="section__title">Rescources</h2>
+          <span class="section__subtitle">Resources used to assist with this project</span>
+        </div>
+        <div class="d-grid">
+          <h3>Key Skills Developed</h3>
+          
+          <h3>Outcomes</h3>
+          
+        </div>
+      </div>
+    </section>
+
+      <div id="section5" class="section">
         <div class="section__header">
           <h2 class="section__title">Skills & Outcomes to be developed</h2>
           <span class="section__subtitle">Key skills and project results</span>
