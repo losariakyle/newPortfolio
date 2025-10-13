@@ -77,21 +77,31 @@
             the USB drive allowing you to reuse multiple iso's.To check the status of the RAM, memtest86+ is a great tool, and runs on both UEFI and Legacy BIOS motherboards. For the HDD, Heron HDPE provides a minamalist
             Windows 11 installation with the most popular tools such as HDD scan
           </p>
+          <img src="assets/img/projects/building-homelab/ventoy.jpg" alt="" class="centered-img">
+          <i class="caption">Ventoy with 4 ISOs</i>
           <p>To run the Linux server, Linux Ubuntu server was used. Ubuntu server provides a minamalist and easy set up for new users and also comes with a CLI cheatsheet</p>
 
 
           <h3><u>Configuring</u></h3>
           <p>Configuring was a new technichal challenge</p>
           <p>With no router being in the configuration, a newly connected device is not assigned an IP</p>
-          <p>Newly assigned ip addresses are given out by hardware on the router or a server</p>
+          <p>Newly assigned ip addresses are given out by hardware on the router or a server via DHCP which automatically gives an ip address to a device that has connected to a network.</p>
+
+          <img src="assets/img/projects/building-homelab/etherneterror.jpg" alt="" class="centered-img">
+          <i class="caption">Since there is DHCP, no ip address is given to this device.</i>
+
+
           <p>So to address this issue, assigning a STATIC ip address is one way of connecting multiple devices for communication</p>
           <br>
           <p>Here typing the linux command <i>ip addr show</i> will show the NICs on the device </p>
-          <p>enp3s0 has no ip Address so we can address this issue</p>
+          <p>the given interface has no ip Address</p>
           <br>
           <p>First we create a Netplan with <i>sudo nano /etc/netplan/01-netcfg.yaml</i></p>
           <p>This is what ive used below, the slash indicates that this is a subnet and is done as to not conflict with the exisiting wifi network</p>
           <p>This ip address /28 is split into 16 addresses, one ip adress is given to address the network</p>
+
+          <img src="assets/img/projects/building-homelab/netplan.jpg" alt="" class="centered-img">
+          <i class="caption">.YAML file with the network config</i>
 
 
           <p>The server is set up with the ip adress ending in the netplan, and applied</p>
@@ -100,6 +110,9 @@
           <p>When you SSH into the server (Image above), running the command ssh -v remoteServerName@ipaddress will show you the steps that it takes to connect to the servers.
             The username and the server name shows, highlighting the successfull connection to the server, meaning the devices can communicate
           </p>
+
+          <img src="assets/img/projects/building-homelab/success.jpg" alt="" class="centered-img">
+          <i class="caption">Successfully SSH'd into the server, from the client, the details can be viewed</i>
 
 
 
@@ -110,31 +123,20 @@
         </div>
       </div>
 
-      <div id="section3" class="section">
-        <div class="section__header">
-          <h2 class="section__title"></h2>
-          <span class="section__subtitle">Initial Configuration</span>
-        </div>
-        <div class="d-grid">
-          <h3>Hardware</h3>
-          
-
-          
-
-          <h3>Software & Services (To be developed)</h3>
-          
-        </div>
-      </div>
+     
 
       <div id="section4" class="section">
         <div class="section__header">
-          <h2 class="section__title">Rescources</h2>
+          <h2 class="section__title">Resources</h2>
           <span class="section__subtitle">Resources used to assist with this project</span>
         </div>
         <div class="d-grid">
-          <h3>Key Skills Developed</h3>
+          <h3>Links</h3>
           
-          <h3>Outcomes</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=s_Ntt6eTn94">Submasking</a> </li>
+            <li><a href="https://www.youtube.com/watch?v=e6-TaH5bkjo">How does DHCP work</a></li>
+          </ul>
           
         </div>
       </div>
@@ -147,8 +149,16 @@
         </div>
         <div class="d-grid">
           <h3>Key Skills Developed</h3>
+
+          <p> - Learning how to edit config files using the terminal and using the nano text editor</p>
+          <p> - Configuring a Linux server without a user interface</p>
+          <p> - Basic network configuring</p>
+
+          <h3>Challanges</h3>
+
+          <p> - Inital setup is tedious and requires thorough research and trial and error.</p>
           
-          <h3>Outcomes</h3>
+          
           
         </div>
       </div>
