@@ -1,0 +1,81 @@
+<head>
+    <link rel="stylesheet" href="assets/css/homelab.css">
+</head>
+
+<main class="container forum-layout">
+    <section id="background">
+        <nav class="top-nav">
+            <ul class="top-nav__list">
+                <li><a href="#section1">Initalising</a></li>
+                <li><a href="#section2">Setting up firewall</a></li>
+                <li><a href="#section3">Problems with Samba and SSH</a></li>
+               
+            </ul>
+        </nav>
+
+        <section class="content">
+            <div id="section1" class="section">
+                <div class="section__header">
+                    <h1>Initalising a firewall</h1>
+                    <br>
+                    <h2 class="section__title">Firewall</h2>
+                        <span class="section__subtitle"></span>
+                </div>
+                <div class="d-grid">
+                    <p>Ubuntu linux has an in built firewall called UFW or (Uncomplicated firewall)</p>
+
+                    <p>By default Ubuntu linux server has the firewall disabled, meaning any client on the internet can 'ping' other the server if ever exposed, leading to security issues.</p>
+
+                    <p>To protect SSH, you can deny all traffic from tcp port 22</p>
+                    <p>And only allow local ip addresses to access SSH</p>
+                    <p><code>sudo ufw allow in on enp3s0 from ipaddr/28 to any port 22 proto tcp</code></p>
+                    <p>Where:</p>
+                    <ul>
+                        <li><code>enp3s0</code> ethernet interface code</li>
+                        <li><code>ipaddr/28</code>This is not the ip address of the </li>
+                        <li><code>to any port 22 proto tcp</code> applied to traffic using the ip address, passing though port 22, using the protocol tcp </li>
+                    </ul>
+                    <p><b>This command below will deny all other SSH connection attempts outside</b></p>
+                    <p><code>sudo ufw deny 22/tcp</code></p>
+                    <p>Where:</p>
+                    <ul>
+                        <li><code>deny</code> Deny traffic from anywhere</li>
+                        <li><code>22/tcp</code> SSH uses mainly TCP for security reasoing through port 22
+                        </li>
+
+
+                    </ul>
+
+                    
+
+                </div>
+
+                <div id="section2" class="section">
+                    <div class="section__header">
+                        <h2 class="section__title">Problems occuring with samaba</h2>
+                        <span class="section__subtitle">Diagnosing problems with samba</span>
+                    </div>
+                    <div class="d-grid">
+                        <h3><u>Issue</u></h3>
+                        <p>After installing the firewall other applications liek SAMBA may stop working if you explitly deny all incoming and outcoming
+                            ports while setting up the firewwall
+                        </p>
+                        <p>Samba uses ports 137, 138, 139, and 445 to facilitate network file and printer sharing, with ports 139 (TCP) and 445 (TCP) serving as the primary channels for modern SMB communication due to their speed and security, while ports 137 (UDP) and 138 (UDP) support NetBIOS name resolution and datagram-based messaging, 
+                            essential for network discovery and legacy compatibility; port 139 ensures older Windows systems can still connect via NetBIOS over TCP/IP, whereas port 445 allows direct SMB over TCP without the overhead of NetBIOS, improving efficiency and reducing attack surfaces, and when acting as an Active Directory Domain Controller, 
+                            Samba may also use ports for LDAP (389 TCP/UDP), Kerberos (88 TCP/UDP), and dynamic RPC ranges (49152–65535 TCP), with these ports selected historically for interoperability with older systems and currently for reliable, cross-platform communication, emphasizing that proper firewall configuration is crucial so these ports function correctly while minimizing exposure to security risks.</p>
+                        
+
+                        <h3><u>Adding additional firewall rules</u></h3>
+                        <p>When adding these rules again, access to Samba from the windows machine is restored</p>
+                      
+                        
+
+                        <img src="assets/img/projects/building-homelab/firewall/finalfirewall.png" alt="" class="centered-img">
+                        <i class="caption">firewall changes</i>
+                    </div>
+                </div>
+
+                
+        </section>
+    </section>
+</main>
