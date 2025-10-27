@@ -8,8 +8,7 @@
             <ul class="top-nav__list">
                 <li><a href="#section1">Initalising</a></li>
                 <li><a href="#section2">Downloading and Configuring samba</a></li>
-                <li><a href="#section3">Outcomes</a></li>
-                <li><a href="#section4"></a></li>
+               
             </ul>
         </nav>
 
@@ -43,6 +42,10 @@
 
 
                     </ul>
+
+                    <img src="assets/img/projects/building-homelab/nas/resize.jpg" alt="" class="centered-img">
+                        <i class="caption">Written commands for paritioning.</i>
+
                 </div>
 
                 <div id="section2" class="section">
@@ -63,10 +66,9 @@
                             where each each converted digit to binary represents the rwx values respectively. Using
                             <code>sudo chmod 0775 /srv/samba/shared</code>, it changes the read write execute
                             permissions so that other people or guests can read and execute</p>
-                        <p></p>
-                        <p></p><img src="assets/img/projects/building-homelab/ventoy.jpg" alt="" class="centered-img">
-                        <i class="caption"></i>
-                        <p></p>
+                        <img src="assets/img/projects/building-homelab/nas/sambaconfig.jpg" alt="" class="centered-img">
+                        <i class="caption">Written commands</i>
+                        
 
                         <h3><u>Configuring SAMBA</u></h3>
                         <p><code><pre>
@@ -89,10 +91,10 @@ o           </code>
 
                         <p><code>
                 <pre>
-                [global]
-                    netbios name = basecserver
-                    workgroup = WORKGROUP
-                    server string = Server on basecserver
+            [global]
+                netbios name = basecserver
+                workgroup = WORKGROUP
+                server string = Server on basecserver
                 </pre>
             </code></p>
 
@@ -108,66 +110,32 @@ o           </code>
 
 
                         <p> <code>
-                <pre>
-                [global]
-                    server signing = mandatory
-                    client signing = mandatory
-                    smb encrypt = required
-                    server min protocol = SMB3_11
-                    client min protocol = SMB3_11
-                    </pre>
+                        <pre>
+            [global]
+                server signing = mandatory
+                client signing = mandatory
+                smb encrypt = required
+                server min protocol = SMB3_11
+                client min protocol = SMB3_11
+                        </pre>
             </code></p>
                         <p>Sever message block is for netowrk ports between nodes on a network </p>
                         <p>With digital signing, we set the client and the server to set up sigantures to ensure that
                             the data hasnt been tampered wwith, minamising man in the middle attacks and relay attacks
                             using cryptography</p>
-                        <img src="assets/img/projects/building-homelab/etherneterror.jpg" alt="" class="centered-img">
-                        <i class="caption">Windows mapped drive</i>
+                        
                         <p>In windows we map a new drive, with the file location being
                             <code>basecserver/Shared</code>(The direcotry name Shared comes from the label [Shared] in
                             the conf file)</p>
                       
-                        <img src="assets/img/projects/building-homelab/netplan.jpg" alt="" class="centered-img">
-                        <i class="caption">Adding a file in windows</i>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <img src="assets/img/projects/building-homelab/success.jpg" alt="" class="centered-img">
-                        <i class="caption">Results of executing <code>"tree /srv/samba/shared"</code></i>
+                        
 
-                        <h3><u></u></h3>
+                        <img src="assets/img/projects/building-homelab/nas/name.jpg" alt="" class="centered-img">
+                        <i class="caption">Mapping the drive.</i>
                     </div>
                 </div>
 
-                <div id="section4" class="section">
-                    <div class="section__header">
-                        <h2 class="section__title"></h2>
-                        <span class="section__subtitle"></span>
-                    </div>
-                    <div class="d-grid">
-                        <h3></h3>
-                        <ul>
-                            <li><a href="https://www.youtube.com/watch?v=s_Ntt6eTn94"></a></li>
-                            <li><a href="https://www.youtube.com/watch?v=e6-TaH5bkjo"></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="section5" class="section">
-                    <div class="section__header">
-                        <h2 class="section__title"></h2>
-                        <span class="section__subtitle"></span>
-                    </div>
-                    <div class="d-grid">
-                        <h3></h3>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
+                
         </section>
     </section>
 </main>
