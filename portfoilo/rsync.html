@@ -1,0 +1,225 @@
+<head>
+    <link rel="stylesheet" href="assets/css/homelab.css">
+</head>
+
+<main class="container forum-layout">
+    <section id="background">
+        <nav class="top-nav">
+            <ul class="top-nav__list">
+                <li><a href="#section1">Initalising</a></li>
+                <li><a href="#section2">Basic command syntax</a></li>
+            
+                <li><a href="#section3">Setting up and running cwrsync</a></li>
+                <li><a href="#section4">Resources</a></li>
+
+               
+            </ul>
+        </nav>
+
+        <section class="content">
+            <div id="section1" class="section">
+                <div class="section__header">
+                    <h1>Setting up rsync for Windows and Linux</h1>
+                    <br>
+                    <h2 class="section__title">rsync download</h2>
+                        <span class="section__subtitle"></span>
+                </div>
+                <div class="d-grid">
+                    <p>rsync is already pre-installed with ubuntu server.</p>
+
+
+                </div>
+
+                <div id="section2" class="section">
+                    <div class="section__header">
+                        <h2 class="section__title">Setting up rsync for windows </h2>
+                        <span class="section__subtitle">cwrsync provides a way to use rsync without WSL</span>
+                    </div>
+                    <div class="d-grid">
+                        
+                        <ul>
+    <li>
+        <strong>Basic rsync syntax</strong><br>
+        <code>rsync [OPTIONS] SOURCE DESTINATION</code>
+        <ul>
+            <li><strong>SOURCE</strong>: file or directory you’re copying from.</li>
+            <li><strong>DESTINATION</strong>: where you’re copying to.</li>
+            <li>Can be local paths or remote paths like <code>user@host:/path/</code>.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Local copy (same machine)</strong><br>
+        <code>rsync -avh /src/folder/ /dst/folder/</code>
+        <ul>
+            <li><code>-a</code>: archive mode (preserves permissions, times, owners, etc.).</li>
+            <li><code>-v</code>: verbose output.</li>
+            <li><code>-h</code>: human-readable numbers.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Remote copy over SSH (push to server)</strong><br>
+        <code>rsync -avz /local/folder/ user@server:/remote/folder/</code>
+        <ul>
+            <li><code>-z</code>: compress data during transfer.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Remote copy over SSH (pull from server)</strong><br>
+        <code>rsync -avz user@server:/remote/folder/ /local/folder/</code>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Using a custom SSH port</strong><br>
+        <code>rsync -avz -e "ssh -p 2222" /local/folder/ user@server:/remote/folder/</code>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Trailing slash behaviour</strong>
+        <ul>
+            <li><code>rsync -av /src/folder /dst/</code> → creates <code>/dst/folder/</code>.</li>
+            <li><code>rsync -av /src/folder/ /dst/</code> → copies contents only.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Dry run (no changes)</strong><br>
+        <code>rsync -av --dry-run /src/ /dst/</code>
+        <ul>
+            <li><code>--dry-run</code> or <code>-n</code>: simulate without copying/deleting.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Show progress</strong><br>
+        <code>rsync -av --progress /src/ /dst/</code><br>
+        or<br>
+        <code>rsync -avP /src/ /dst/</code>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Mirror a directory (delete extra files)</strong><br>
+        <code>rsync -av --delete /src/ /dst/</code>
+        <ul>
+            <li><strong>Warning:</strong> deletes files in destination that no longer exist in source.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Include/Exclude patterns</strong>
+        <ul>
+            <li>Exclude patterns:<br><code>rsync -av --exclude="*.tmp" --exclude="cache/" /src/ /dst/</code></li>
+            <li>Include only certain files:<br><code>rsync -av --include="*.cfg" --exclude="*" /src/ /dst/</code></li>
+            <li>Use exclude file:<br><code>rsync -av --exclude-from="exclude.txt" /src/ /dst/</code></li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Preserving permissions & ownership</strong><br>
+        <code>rsync -av /src/ /dst/</code>
+        <ul>
+            <li><code>-a</code> preserves: perms, times, group, owner, devices, symlinks.</li>
+            <li>Run with <code>sudo</code> if you need to preserve owners/groups.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Limit bandwidth</strong><br>
+        <code>rsync -av --bwlimit=5000 /src/ user@server:/dst/</code>
+        <ul>
+            <li><code>--bwlimit</code>: limit speed in KB/s.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Use checksums instead of mod-times</strong><br>
+        <code>rsync -avc /src/ /dst/</code>
+        <ul>
+            <li><code>-c</code>: checksum comparison (slower but accurate).</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Sync via rsync daemon</strong><br>
+        <code>rsync -av rsync://server/module/path /local/dst/</code>
+        <ul>
+            <li>Requires <code>rsyncd</code> running and configured on remote.</li>
+        </ul>
+    </li>
+    <br><br>
+
+    <li>
+        <strong>Backup pattern (date-stamped folder)</strong><br>
+        <code>rsync -av --delete /data/ /backups/$(date +%Y-%m-%d)/</code>
+    </li>
+    <br><br>
+</ul>
+
+
+
+                        <img src="" alt="" class="centered-img">
+                        <i class="caption">Written commands</i>
+
+
+
+
+
+
+                    <div id="section3" class="section">
+                        <h3><u>Setting up cwRsync</u></h3>
+                        <p><code><pre>
+        rsync 
+        -avz '/cygdrive/c/Users\losar\project files' 
+        kyle@192.168.10.18/srv/samba/shared/project files
+                </pre>
+           </code>
+                        </p>We add this to "cwrsync.cmd" in the window folder
+                        </p>
+                        <br>
+
+
+
+                      
+                        
+
+                        <img src="assets/img/projects/building-homelab/rsync/final.png" alt="" class="centered-img">
+                        <i class="caption">Displayed files in folder</i>
+
+
+                    </div>
+
+
+                    <div class="section" id="section4">
+                        <ul><h3>Resources</h3></ul>
+                        <br>
+                        <ul>
+                            <li><a href="https://itefix.net/cwrsync/client/downloads">cwRsync Download - itefix.fcom</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=LC_buUCTfE0">Using rsync on windows tutorial - Vocalized Learning</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=KG78O53u8rY">Linux file transfers made easy on Linux - Learn Linux</a></li>
+                        </ul>
+                    </div>
+                        
+
+                        
+                    </div>
+                </div>
+
+                
+        </section>
+    </section>
+</main>

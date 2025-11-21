@@ -1,0 +1,89 @@
+<head>
+    <link rel="stylesheet" href="assets/css/homelab.css">
+</head>
+
+<main class="container forum-layout">
+    <section id="background">
+        <nav class="top-nav">
+            <ul class="top-nav__list">
+                <li><a href="#section1">Initalising</a></li>
+                <li><a href="#section2">Downloading and Configuring isc-dhcp.</a></li>
+               
+            </ul>
+        </nav>
+
+        <section class="content">
+            <div id="section1" class="section">
+                <div class="section__header">
+                    <h1>Setting up DHCP</h1>
+                    <br>
+                    <h2 class="section__title">Firewall settings</h2>
+                        <span class="section__subtitle"></span>
+                </div>
+                <div class="d-grid">
+                    <p>When setting up DHCP, you can use isc-dhcp server</p>
+
+                    <p>Running</p>
+                    <p><code>sudo apt install dhcp-server</code></p>
+                    
+        
+                    <p><code>sudo nano /etc/dhcp/dhcpd.conf</code></p>
+                    <p>To configure the dhcp server.</p>
+                    
+
+                  
+
+                </div>
+
+                <div id="section2" class="section">
+                    <div class="section__header">
+                        <h2 class="section__title">Setting up DHCP server</h2>
+                        <span class="section__subtitle">Writing the configuration file</span>
+                    </div>
+                    <div class="d-grid">
+                        
+                        <p>Before configuring (key notes) </p>
+                        <p>First you need to configure the ip address of the server in the yaml file ownership of the file
+                        </p>
+                        <p><u>About DHCP</u></p>
+                        <p>With dhcp comes a lease time which is the time frame that the device can use the ip address.</p>
+                        <p>After half of the lease time is used the device will ping the server for a new ip address.</p>
+                        <p>If there is no response from the server, the device will continue to use that ip address until the lease time expires.</p>
+                        <p>If devices are frequently connecting and disconnecting from the network then it may be better to have a short lease time</p>
+                        <p>Longer lease times are better for homelab environments as it reduces conflict within the network.</p>
+
+                        
+                        
+
+                        <h3><u>Configuring SAMBA</u></h3>
+                        <p><code><pre>
+            default-lease-time 600;
+            max-lease-time 7200;
+            authorative;
+
+            subnet 192.168.10.18 netmask 255.255.255.240 {
+                range 192.168.10.19 192.168.10.30;
+                option subnet-mask 255.255.255.240;
+                option broadcast-address 192.168.10.31;
+                option domain-name-servers 1.1.1.1, 8.8.8.8;
+                
+            }
+                </pre>
+           </code>
+                        </p>We add this to <code>/etc/default/isc-dhcp-server</code>
+                            INTERFACESv4="ens33"
+                        </p>
+
+
+
+                      
+                        
+
+                       
+                    </div>
+                </div>
+
+                
+        </section>
+    </section>
+</main>

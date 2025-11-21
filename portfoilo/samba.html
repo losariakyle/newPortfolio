@@ -22,7 +22,7 @@
                 </div>
                 <div class="d-grid">
                     <p>When setting up linux unbuntu server the, size of storage it intialally gives the user is about
-                        100GB, sotred in the SDA3 partition</p>
+                        100GB, sorted in the SDA3 partition.</p>
 
                     <p>We can extend this the storage space by using 2 commands</p>
                     <p><code>sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv</code></p>
@@ -30,7 +30,7 @@
                     <ul>
                         <li><code>lvextend</code> commands to extend the logical volume managed by the LVM</li>
                         <li><code>-l 100%FREE</code>Use 100 percent of the free remaining space</li>
-                        <li><code>/dev/ubuntu-vg/ubuntu-lv</code> Where the logical volume is stored</li>
+                        <li><code>/dev/ubuntu-vg/ubuntu-lv</code> Where the logical volume is stored.</li>
                     </ul>
                     <p><b>THIS DOES NOT RESIZE THE FILESYSTEM YET, just the volume container</b></p>
                     <p><code>sudo resize2fs /dev/ubuntu-vg/ubuntu-lv</code></p>
@@ -56,11 +56,11 @@
                     <div class="d-grid">
                         <h3><u>Creating the shared directory</u></h3>
                         <p>After installing samba we can make a folder that everyone can acess</p>
-                        <p>1. Make a directory inside under <code>/srv/samba/shared</code>, /srv/ is a folder desigined
+                        <p>1. Make a directory inside under <code>/srv/samba/shared</code>, /srv/ is a folder designed
                             especially to store
                             service data, which the NAS comes under</p>
                         <p>2. Change the ownership of the file of <code>/srv/samba/shared</code>, to
-                            <code>nobody:nogroup</code>, this way permissions to access the folder shouldnt be asked.
+                            <code>nobody:nogroup</code>, this way permissions to access the folder shouldn't be asked.
                         </p>
                         <p>3. We change the directory permissions or the -rwxs, this is represented using an octal,
                             where each each converted digit to binary represents the rwx values respectively. Using
@@ -80,11 +80,11 @@
                 create mask = 0664
                 directory mask = 0775
                 </pre>
-o           </code>
+           </code>
                         </p>We add this to <code>/etc/samba/smb.conf</code> where the path tells samba the storage
                         location, browseable allows the files to be viewed, read only set tno allows the users to upload
                         and execute the file.
-                        The directory mask sets the permissions sthat a new directory can have for example other people
+                        The directory mask sets the permissions so that a new directory can have for example other people
                         here can on read and execute, (execute in the diretory allows travsersals NOT file execution!).
                         The create mask here is permissions for what files can have here other people can read only.</p>
 
@@ -122,11 +122,11 @@ o           </code>
                         <p>Sever message block is for netowrk ports between nodes on a network </p>
                         <p>With digital signing, we set the client and the server to set up sigantures to ensure that
                             the data hasnt been tampered wwith, minamising man in the middle attacks and relay attacks
-                            using cryptography</p>
+                            using cryptography.</p>
                         
                         <p>In windows we map a new drive, with the file location being
                             <code>basecserver/Shared</code>(The direcotry name Shared comes from the label [Shared] in
-                            the conf file)</p>
+                            the conf file).</p>
                       
                         
 

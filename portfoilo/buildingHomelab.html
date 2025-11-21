@@ -31,12 +31,12 @@
         <div class="d-grid">
           <div class="textParagraph">
             <h3>Gigabyte Brix</h3>
-            <p>The Gigabyte BRIX serves as the central component of the homelab, functioning as the main Proxmox server that hosts multiple virtual machines and Docker containers. It also operates as the NAS (Network Attached Storage) for file backups, ISO images, and shared resources. Despite its small form factor, the BRIX provides reliable performance for continuous uptime and lightweight virtual workloads.</p>
+            <p>The Gigabyte BRIX serves as the central component of the homelab, functioning as the main Linux ubuntu server that will host multiple virtual machines and Docker containers. It also operates as the NAS (Network Attached Storage) for file backups, ISO images, and shared resources. Despite its small form factor, the BRIX provides reliable performance for continuous uptime and lightweight virtual workloads.</p>
           </div>
 
           <div class="textParagraph">
             <h3>Tp Link 105SG</h3>
-            <p>The TP-Link 105SG switch connects all homelab devices together, forming the local network backbone. It ensures stable gigabit communication between the Proxmox server, personal PCs, and external management devices. Although simple, this unmanaged switch provides consistent throughput and low latency for small-scale lab networking.</p>
+            <p>The TP-Link 105SG switch connects all homelab devices together, forming the local network backbone. It ensures stable gigabit communication between the server, personal PCs, and external management devices. Although simple, this unmanaged switch provides consistent throughput and low latency for small-scale lab networking.</p>
           </div>
 
           <div class="textParagraph">
@@ -49,7 +49,7 @@
           <div class="textParagraph">
             <h3>Chromebook with Linux (Nobara) — No Cost</h3>
             <p>
-            The Chromebook running Linux Nobara acts as the network management and control device for the lab. It handles VLAN configuration, firewall adjustments, and SSH connections to other systems. Its portability allows quick network troubleshooting, monitoring, and configuration from anywhere within the local network.
+            The Chromebook running Linux Nobara acts as client for network testing.
             </p>
           </div>
 
@@ -72,43 +72,42 @@
         <div class="d-grid">
           
           <h3><u>Building</u></h3>
-          <p>Here is are the devcies connected to each other, each device is connected using a cat 6 rj45 ethernet cable</p>
+          <p>Here is are the devcies connected to each other, each device is connected using a cat 6 rj45 ethernet cable.</p>
           <p>Before running and installing the Operating System, its a good idea to run tests on the equipment. Ventoy is an excellent tool, it runs on a USB and allows you to put multiple isos on
             the USB drive allowing you to reuse multiple iso's.To check the status of the RAM, memtest86+ is a great tool, and runs on both UEFI and Legacy BIOS motherboards. For the HDD, Heron HDPE provides a minamalist
-            Windows 11 installation with the most popular tools such as HDD scan
+            Windows 11 installation with the most popular tools such as HDD scan.
           </p>
           <img src="assets/img/projects/building-homelab/ventoy.jpg" alt="" class="centered-img">
           <i class="caption">Ventoy with 4 ISOs</i>
-          <p>To run the Linux server, Linux Ubuntu server was used. Ubuntu server provides a minamalist and easy set up for new users and also comes with a CLI cheatsheet</p>
+          <p>To run the Linux server, Linux Ubuntu server was used. Ubuntu server provides a minamalist and easy set up for new users and also comes with a CLI cheatsheet.</p>
 
 
           <h3><u>Configuring</u></h3>
           <p>Configuring was a new technichal challenge</p>
-          <p>With no router being in the configuration, a newly connected device is not assigned an IP</p>
+          <p>With no router being in the configuration, a newly connected device is not assigned an IP.</p>
           <p>Newly assigned ip addresses are given out by hardware on the router or a server via DHCP which automatically gives an ip address to a device that has connected to a network.</p>
 
           <img src="assets/img/projects/building-homelab/etherneterror.jpg" alt="" class="centered-img">
           <i class="caption">Since there is DHCP, no ip address is given to this device.</i>
 
 
-          <p>So to address this issue, assigning a STATIC ip address is one way of connecting multiple devices for communication</p>
+          <p>So to address this issue, assigning a STATIC ip address is one way of connecting multiple devices for communication.</p>
           <br>
-          <p>Here typing the linux command <i>ip addr show</i> will show the NICs on the device </p>
+          <p>Here typing the linux command <i>ip addr show</i> will show the NICs on the device.</p>
           <p>the given interface has no ip Address</p>
           <br>
           <p>First we create a Netplan with <i>sudo nano /etc/netplan/01-netcfg.yaml</i></p>
-          <p>This is what ive used below, the slash indicates that this is a subnet and is done as to not conflict with the exisiting wifi network</p>
-          <p>This ip address /28 is split into 16 addresses, one ip adress is given to address the network</p>
+          <p>This is what i've used below, the slash indicates that this is a subnet and is done as to not conflict with the exisiting wifi network.</p>
+          <p>This ip address /28 is split into 16 addresses, one ip adress is given to address the network.</p>
 
           <img src="assets/img/projects/building-homelab/netplan.jpg" alt="" class="centered-img">
           <i class="caption">.YAML file with the network config</i>
 
 
-          <p>The server is set up with the ip adress ending in the netplan, and applied</p>
-          <p>Insert some image</p>
-          <p>On the chromebook, a .19 ending ip adress is used </p>
+          <p>The server is set up with the ip adress ending in the netplan, and applied.</p>
+          <p>On the chromebook, a .19 ending ip adress is used.</p>
           <p>When you SSH into the server (Image above), running the command ssh -v remoteServerName@ipaddress will show you the steps that it takes to connect to the servers.
-            The username and the server name shows, highlighting the successfull connection to the server, meaning the devices can communicate
+            The username and the server name shows, highlighting the successfull connection to the server, meaning the devices can communicate.
           </p>
 
           <img src="assets/img/projects/building-homelab/success.jpg" alt="" class="centered-img">
@@ -134,8 +133,8 @@
           <h3>Links</h3>
           
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=s_Ntt6eTn94">Submasking</a> </li>
-            <li><a href="https://www.youtube.com/watch?v=e6-TaH5bkjo">How does DHCP work</a></li>
+            <li><a href="https://www.youtube.com/watch?v=s_Ntt6eTn94">Submasking - PowerCert Animcated Videos</a> </li>
+            <li><a href="https://www.youtube.com/watch?v=e6-TaH5bkjo">How does DHCP work - PowerCert Animated videos</a></li>
           </ul>
           
         </div>
@@ -150,9 +149,9 @@
         <div class="d-grid">
           <h3>Key Skills Developed</h3>
 
-          <p> - Learning how to edit config files using the terminal and using the nano text editor</p>
-          <p> - Configuring a Linux server without a user interface</p>
-          <p> - Basic network configuring</p>
+          <p> - Learning how to edit config files using the terminal and using the nano text editor.</p>
+          <p> - Configuring a Linux server without a user interface.</p>
+          <p> - Basic network configuring.</p>
 
           <h3>Challanges</h3>
 
